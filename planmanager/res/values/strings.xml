@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">一页软件</string>
+    <string name="attention">注意</string>
+    <string name="exit_tip">是否退出？</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="welcomeDistribution">欢迎页面</string>
+    <string name="copyright">\@2015 一页软件</string>
+    <string name="login_failed">用户名或密码错误</string>
+    <string name="logining">登录中</string>
+</resources>

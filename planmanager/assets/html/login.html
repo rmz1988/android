@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="login">
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>一页软件</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="../js/frameworks/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/frameworks/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/frameworks/angular.min.js"></script>
+    <script type="text/javascript" src="../js/frameworks/angular-animate.min.js"></script>
+    <script type="text/javascript" src="../js/frameworks/w5cValidator.min.js"></script>
+    <script type="text/javascript" src="../js/frameworks/app.js"></script>
+    <script type="text/javascript" src="../js/services/service.js"></script>
+    <script type="text/javascript" src="../js/controllers/controller.js"></script>
+</head>
+<body>
+<div id="login-carousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#login-carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#login-carousel" data-slide-to="1"></li>
+        <li data-target="#login-carousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="../images/ad0.jpg" alt="" style="width: 100%;height: 350px;">
+
+            <div class="carousel-caption">
+            </div>
+        </div>
+        <div class="item">
+            <img src="../images/ad1.jpg" alt="" style="width: 100%;height: 350px;">
+
+            <div class="carousel-caption">
+            </div>
+        </div>
+        <div class="item">
+            <img src="../images/ad2.jpg" alt="" style="width: 100%;height: 350px;">
+
+            <div class="carousel-caption">
+            </div>
+        </div>
+    </div>
+</div>
+<hr/>
+<form class="form-inline" role="form" novalidate w5c-form-validate name="loginForm" ng-controller="LoginController">
+
+    <div class="form-group" style="clear:both;">
+        <div class="input-group">
+            <input class="form-control input-lg col-md-10" type="text" name="address" ng-model="address"
+                   placeholder="服务地址"
+                   required readonly/>
+            <span class="input-group-btn">
+                <button class="btn btn-default btn-lg" ng-click="setAddress()">
+                    设置
+                </button>
+            </span>
+        </div>
+    </div>
+    <div class="form-group" style="width:35%;float:left;margin-right:10px;">
+        <input class="form-control input-lg" type="text" name="username" ng-model="params.apiUser"
+               placeholder="用户名" required/>
+    </div>
+    <div class="form-group" style="width:35%;float:left;">
+        <input class="form-control input-lg" type="password" name="password" ng-model="params.apiPassword"
+               placeholder="密码" required/>
+    </div>
+    <button class="btn btn-info btn-lg pull-right" style="width:20%;" w5c-form-submit="login()">登 录</button>
+    <div class="alert alert-danger col-md-12" style="clear:both;" ng-show="loginForm.$errors.length > 0">
+        {{loginForm.$errors[0]}}
+    </div>
+</form>
+</body>
+</html>

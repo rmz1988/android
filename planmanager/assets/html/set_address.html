@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="login">
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>设置地址</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="../js/frameworks/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/frameworks/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/frameworks/angular.min.js"></script>
+    <script type="text/javascript" src="../js/frameworks/angular-animate.min.js"></script>
+    <script type="text/javascript" src="../js/frameworks/w5cValidator.min.js"></script>
+    <script type="text/javascript" src="../js/frameworks/app.js"></script>
+    <script type="text/javascript" src="../js/services/service.js"></script>
+    <script type="text/javascript" src="../js/controllers/controller.js"></script>
+</head>
+<body>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        设置服务器地址
+    </div>
+    <div class="panel-body">
+        <form role="form" novalidate w5c-form-validate name="addressSetForm" ng-controller="AddressSetController">
+            <div class="form-group">
+                <label class="control-label" for="name">
+                    名称
+                </label>
+                <input class="form-control input-lg" type="text" id="name" ng-model="name" placeholder="例如：外网"
+                       required/>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="address">地址</label>
+                <input class="form-control input-lg" type="text" id="address" ng-model="address"
+                       placeholder="例如：http://192.168.1.1:81" required/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-info btn-block" w5c-form-submit="setAddress()">确定</button>
+                <button class="btn btn-lg btn-default btn-block" ng-click="back()">返回</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

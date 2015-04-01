@@ -1,0 +1,113 @@
+<div class="panel-heading">
+    <div class="main-title" ng-controller="TitleController">
+        <h4>计划查询（{{time}}）</h4>
+
+        <div class="btn-group pull-right" style="margin-top: -42px;">
+            <button class="btn btn-info btn-lg" ng-click="addPlan()">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+            <button class="btn btn-info btn-lg" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-list"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#" style="font-size: 20px;" ng-click="selectTime(0)">年计划</a></li>
+                <li><a href="#" style="font-size: 20px;" ng-click="selectTime(1)">月计划</a></li>
+                <li><a href="#" style="font-size: 20px;" ng-click="selectTime(2)">周计划</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="panel-body main-content" ng-controller="PlanListController">
+    <form role="form">
+        <div class="form-group">
+            <label class="control-label" for="apiType">
+                计划类型
+            </label>
+
+            <select class="form-control input-lg" name="apiType" id="apiType" ng-model="apiType">
+                <option value="year">本年度计划</option>
+                <option value="yearnext">下年度计划</option>
+                <option value="month">本月计划</option>
+                <option value="monthnext">下月计划</option>
+                <option value="weeks">本周计划</option>
+                <option value="weeksnext">下周计划</option>
+            </select>
+        </div>
+    </form>
+    <hr/>
+    <div class="plan">
+        <div class="col-xs-6 plan-content">
+            测试计划1
+            <span class="status">已审批</span>
+        </div>
+        <div class="col-xs-6 plan-opt">
+            <div class="btn-group pull-right">
+                <button class="btn btn-success btn-lg" ng-click="execute()">
+                    编辑
+                </button>
+                <button class="btn btn-danger btn-lg" data-toggle="modal" data-target="#deleteTip1"
+                        data-backdrop="static" data-keyboard="false">
+                    删除
+                </button>
+            </div>
+        </div>
+
+        <div class="modal delete-tip" tabindex="-1" role="dialog" aria-hidden="true"
+             id="deleteTip1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        提示
+                    </div>
+                    <div class="modal-body">
+                        <p>是否删除该任务？</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal"
+                                ng-click="deletePlan(1)">确定
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="plan">
+        <div class="col-xs-6 plan-content">
+            测试计划2
+            <span class="status">未审批</span>
+        </div>
+        <div class="col-xs-6 plan-opt">
+            <div class="btn-group pull-right">
+                <button class="btn btn-success btn-lg" ng-click="execute()">
+                    编辑
+                </button>
+                <button class="btn btn-danger btn-lg" data-toggle="modal" data-target="#deleteTip2"
+                        data-backdrop="static" data-keyboard="false">
+                    删除
+                </button>
+            </div>
+        </div>
+        <div class="modal delete-tip" tabindex="-1" role="dialog" aria-hidden="true"
+             id="deleteTip2">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        提示
+                    </div>
+                    <div class="modal-body">
+                        <p>是否删除该任务？</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal"
+                                ng-click="deletePlan(2)">确定
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

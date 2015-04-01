@@ -1,0 +1,85 @@
+<div class="panel-heading">
+    <div class="main-title" ng-controller="TitleController">
+        <h4>计划审批（{{time}}）</h4>
+
+        <div class="btn-group pull-right" style="margin-top: -42px;">
+            <button class="btn btn-info btn-lg dropdown-toggle" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-list"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#" style="font-size: 20px;" ng-click="selectTime(0)">年计划</a></li>
+                <li><a href="#" style="font-size: 20px;" ng-click="selectTime(1)">月计划</a></li>
+                <li><a href="#" style="font-size: 20px;" ng-click="selectTime(2)">周计划</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="panel-body main-content" ng-controller="PlanAuditController">
+    <form role="form">
+        <div class="form-group">
+            <label class="control-label" for="apiType">
+                计划类型
+            </label>
+
+            <select class="form-control input-lg" name="apiType" id="apiType" ng-model="apiType">
+                <option value="year">本年度计划</option>
+                <option value="yearnext">下年度计划</option>
+                <option value="month">本月计划</option>
+                <option value="monthnext">下月计划</option>
+                <option value="weeks">本周计划</option>
+                <option value="weeksnext">下周计划</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="position">
+                职位
+            </label>
+            <select class="form-control input-lg" name="position" id="position" ng-model="position">
+                <option value="0">董事长</option>
+                <option value="1">总经理</option>
+                <option value="2">副总经理</option>
+                <option value="3">市场部经理</option>
+                <option value="4">企划专员</option>
+                <option value="5">销售总监</option>
+                <option value="6">销售专员</option>
+                <option value="7">研发总监</option>
+                <option value="8">技术专员</option>
+                <option value="9">财务总监</option>
+                <option value="10">会计</option>
+                <option value="11">出纳</option>
+                <option value="12">后勤主管</option>
+                <option value="13">人力资源总监</option>
+                <option value="14">人力专员</option>
+            </select>
+        </div>
+    </form>
+    <hr/>
+
+    <div class="plan">
+        <div class="col-xs-8 plan-content">
+            测试计划1
+            <span class="status">已审批</span>
+        </div>
+        <div class="col-xs-4 plan-opt">
+            <div class="btn-group pull-right">
+                <button class="btn btn-success btn-lg" ng-click="audit()">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="plan">
+        <div class="col-xs-8 plan-content">
+            测试计划2
+            <span class="status">未审批</span>
+        </div>
+        <div class="col-xs-4 plan-opt">
+            <div class="btn-group pull-right">
+                <button class="btn btn-success btn-lg" ng-click="audit()">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

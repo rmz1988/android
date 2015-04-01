@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="main">
+<head lang="zh-CN" style="height: 100%;">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>主页</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="../js/frameworks/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/frameworks/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/frameworks/angular.min.js"></script>
+    <script type="text/javascript" src="../js/frameworks/angular-animate.min.js"></script>
+    <script type="text/javascript" src="../js/frameworks/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="../js/frameworks/w5cValidator.min.js"></script>
+    <script type="text/javascript" src="../js/frameworks/app.js"></script>
+    <script type="text/javascript" src="../js/services/service.js"></script>
+    <script type="text/javascript" src="../js/controllers/controller.js"></script>
+</head>
+<body class="main-body">
+<div class="panel panel-info main-panel" ui-view="">
+
+</div>
+<div class="menubar">
+    <div class="menu" ng-controller="ViewController">
+        <a href="#" ng-class="{true:'menu-item active',false:'menu-item'}[active[0]]" ui-sref=".list"
+           ng-click="selected(0)">
+            计划查询
+        </a>
+        <a href="#" ng-class="{true:'menu-item active',false:'menu-item'}[active[1]]" ui-sref=".auditList"
+           ng-click="selected(1)">
+            计划审批
+        </a>
+        <a href="#" ng-class="{true:'menu-item active',false:'menu-item'}[active[2]]" ui-sref=".setting"
+           ng-click="selected(2)">
+            我的
+        </a>
+    </div>
+</div>
+</body>
+</html>
