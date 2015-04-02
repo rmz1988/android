@@ -2,17 +2,15 @@ loginModule.controller('LoginController', ['$scope', "$http", function ($scope, 
     var loginInfo = android.getTempLoginUser();
     if (loginInfo != null && loginInfo != undefined) {
         loginInfo = JSON.parse(loginInfo);
-        $scope.username = loginInfo.username;
-        $scope.password = loginInfo.password;
+        $scope.params = $scope.params || {};
+        $scope.params.apiUser = loginInfo.username;
+        $scope.params.apiPassword = loginInfo.password;
     }
 
-    var address = android.getAddress();
-    if (address != null && address != undefined) {
-        $scope.address = JSON.parse(address).address;
-    }
+    $scope.address = android.getAddress();
 
     $scope.setAddress = function () {
-        android.setTempLoginUser($scope.username, $scope.password);
+        android.setTempLoginUser($scope.params.apiUser, $scope.params.apiPassword);
         window.location.href = '/android_asset/html/set_address.html';
     };
 
@@ -38,7 +36,7 @@ loginModule.controller('LoginController', ['$scope', "$http", function ($scope, 
 
 loginModule.controller("AddressSetController", ["$scope", function ($scope) {
     $scope.setAddress = function () {
-        android.saveAddress($scope.name, $scope.address);
+        android.saveAddress($scope.address);
         $scope.back();
     };
 
@@ -48,7 +46,7 @@ loginModule.controller("AddressSetController", ["$scope", function ($scope) {
 }]);
 
 mainModule.controller("ViewController", ["$scope", function ($scope) {
-    $scope.active = [true, false, false];
+    $scope.active = [true, false, false, false];
 
     $scope.selected = function (idx) {
         for (var i = 0; i < $scope.active.length; i++) {
@@ -79,13 +77,10 @@ mainModule.controller("TitleController", ["$scope", "$state", "$stateParams", "p
         planTypeService.type = idx;
     };
 
-    $scope.addPlan = function () {
-        $state.go('add', '', {reload: true});
-    };
-
     $scope.back = function (state, params) {
         $state.go(state, params, {reload: true});
-    }
+    };
+
 }]);
 
 mainModule.controller("SettingController", ['$scope', function ($scope) {
@@ -131,18 +126,11 @@ mainModule.controller("AddPlanController", ['$scope', '$http', "$state", functio
     }
 }]);
 
-mainModule.controller("PlanListController", ["$scope", "$state", "planTypeService", function ($scope, $state, planTypeService) {
+mainModule.controller("PlanListController", ["$scope", "$state", function ($scope, $state) {
     $scope.apiType = 'year';
 
-    $scope.service = planTypeService;
-    $scope.$watch("service", function (service) {
-        //修改任务类型
-        $scope.apiType = service.type;
-        //todo 加载对应类型计划
-    }, true);
-
-    $scope.execute = function () {
-        $state.go('execute', '', {reload: true});
+    $scope.detail = function () {
+        $state.go('detail', '', {reload: true});
     };
 
     $scope.deletePlan = function (id) {
@@ -151,18 +139,84 @@ mainModule.controller("PlanListController", ["$scope", "$state", "planTypeServic
     }
 }]);
 
-mainModule.controller("PlanAuditController", ["$scope", "$state", "planTypeService", function ($scope, $state, planTypeService) {
+mainModule.controller("PlanAuditController", ["$scope", "$state", function ($scope, $state) {
     $scope.apiType = 'year';
-
-    $scope.service = planTypeService;
-    $scope.$watch("service", function (service) {
-        //修改任务类型
-        $scope.type = service.type;
-
-        //todo 加载对应类型计划
-    }, true);
 
     $scope.audit = function () {
         $state.go('audit', '', {reload: true});
     }
+}]);
+
+mainModule.controller('PlanDetailController', ["$scope", "$http", "$stateParams", function ($scope, $http, $stateParams) {
+    //todo 加载计划信息
+    var times = {
+        year: '本年度计划',
+        yearnext: '下年度计划',
+        month: '本月计划',
+        monthnext: '下月计划',
+        weeks: '本周计划',
+        weeksnext: '下周计划'
+    };
+
+    var plan = $scope.plan = $scope.plan || {};
+    plan.type = times['year'];
+    plan.apiTitle = '测试计划';
+    plan.apiTime = '8月份';
+    plan.apiQuantity = '2';
+    plan.apiQuality = '优秀';
+    plan.apiEvaluation = '优秀';
+    plan.apiCost = '没有成本';
+}]);
+
+mainModule.controller('AuditDetailController', ["$scope", "$http", "$stateParams", function ($scope, $http, $stateParams) {
+    //todo 加载计划信息
+    $scope.auditResult = '0';
+    var times = {
+        year: '本年度计划',
+        yearnext: '下年度计划',
+        month: '本月计划',
+        monthnext: '下月计划',
+        weeks: '本周计划',
+        weeksnext: '下周计划'
+    };
+
+    var plan = $scope.plan = $scope.plan || {};
+    plan.type = times['year'];
+    plan.apiTitle = '测试计划';
+    plan.apiTime = '8月份';
+    plan.apiQuantity = '2';
+    plan.apiQuality = '优秀';
+    plan.apiEvaluation = '优秀';
+    plan.apiCost = '没有成本';
+}]);
+
+mainModule.controller('PlanExecuteController', ['$scope', '$state', '$http', function ($scope, $state, $http) {
+    $scope.apiType = 'year';
+
+    $scope.execute = function () {
+        $state.go('executeDetail', '', {reload: true});
+    }
+}]);
+
+mainModule.controller('ExecuteDetailController', ['$scope', '$http', '$stateParams', function ($scope, $http, $stateParams) {
+    //todo 加载计划信息
+    $scope.auditResult = '0';
+    var times = {
+        year: '本年度计划',
+        yearnext: '下年度计划',
+        month: '本月计划',
+        monthnext: '下月计划',
+        weeks: '本周计划',
+        weeksnext: '下周计划'
+    };
+
+    var plan = $scope.plan = $scope.plan || {};
+    plan.type = times['year'];
+    plan.apiTitle = '测试计划';
+    plan.apiTime = '8月份';
+    plan.apiQuantity = '2';
+    plan.apiQuality = '优秀';
+    plan.apiEvaluation = '优秀';
+    plan.apiCost = '没有成本';
+    plan.apiStatus = '0';
 }]);

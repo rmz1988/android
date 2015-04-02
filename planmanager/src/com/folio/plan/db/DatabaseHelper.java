@@ -34,7 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 						"power text," +
 						"key text)");
 		sqLiteDatabase.execSQL(
-				"create table if not exists address_conf(id integer primary key autoincrement,name text,address text)");
+				"create table if not exists address_conf(id integer primary key autoincrement,address text)");
 	}
 
 	@Override

@@ -1,9 +1,9 @@
 <div class="panel-heading">
     <div class="main-title" ng-controller="TitleController">
-        <h4>计划审批</h4>
+        <h4>计划执行</h4>
     </div>
 </div>
-<div class="panel-body main-content" ng-controller="PlanAuditController">
+<div class="panel-body main-content" ng-controller="PlanExecuteController">
     <form role="form">
         <div class="form-group">
             <div class="input-group">
@@ -23,30 +23,30 @@
         </div>
     </form>
     <hr/>
-
     <div class="plan">
-        <div class="col-xs-8 plan-content-full">
+        <div class="col-xs-6 plan-content-full">
             测试计划1
         </div>
-        <div class="col-xs-4 plan-opt">
+        <div class="col-xs-6 plan-opt">
             <div class="btn-group pull-right">
-                <button class="btn btn-success btn-lg" ng-click="audit()">
-                    审批
+                <button class="btn btn-success btn-lg" ng-click="execute()">
+                    执行
                 </button>
             </div>
         </div>
     </div>
 
     <div class="plan">
-        <div class="col-xs-8 plan-content-full">
+        <div class="col-xs-6 plan-content-full">
             测试计划2
         </div>
-        <div class="col-xs-4 plan-opt">
+        <div class="col-xs-6 plan-opt">
             <div class="btn-group pull-right">
-                <button class="btn btn-success btn-lg" ng-click="audit()">
-                    审批
+                <button class="btn btn-success btn-lg" ng-click="execute()">
+                    执行
                 </button>
             </div>
         </div>
     </div>
+
 </div>

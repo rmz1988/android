@@ -28,13 +28,17 @@
            ng-click="selected(0)">
             计划查询
         </a>
-        <a href="#" ng-class="{true:'menu-item active',false:'menu-item'}[active[1]]" ui-sref=".auditList"
+        <a href="#" ng-class="{true:'menu-item active',false:'menu-item'}[active[1]]" ui-sref=".add"
            ng-click="selected(1)">
-            计划审批
+            计划编制
         </a>
-        <a href="#" ng-class="{true:'menu-item active',false:'menu-item'}[active[2]]" ui-sref=".setting"
+        <a href="#" ng-class="{true:'menu-item active',false:'menu-item'}[active[2]]" ui-sref=".execute"
            ng-click="selected(2)">
-            我的
+            计划执行
+        </a>
+        <a href="#" ng-class="{true:'menu-item active',false:'menu-item'}[active[3]]" ui-sref=".auditList"
+           ng-click="selected(3)">
+            计划审批
         </a>
     </div>
 </div>

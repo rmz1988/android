@@ -96,13 +96,9 @@ public class ConfigUtils {
 	public String getAddress() throws Exception {
 		String result = null;
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
-		Cursor cursor = db.query("address_conf", new String[]{"name", "address"}, null, null, null, null, null);
-		AddressConf addressConf;
+		Cursor cursor = db.query("address_conf", new String[]{"address"}, null, null, null, null, null);
 		if (cursor.moveToNext()) {
-			addressConf = new AddressConf();
-			addressConf.setName(cursor.getString(cursor.getColumnIndex("name")));
-			addressConf.setAddress(cursor.getString(cursor.getColumnIndex("address")));
-			result = mapper.writeValueAsString(addressConf);
+			result = cursor.getString(cursor.getColumnIndex("address"));
 		}
 
 		return result;
@@ -141,7 +137,7 @@ public class ConfigUtils {
 	}
 
 	@JavascriptInterface
-	public void saveAddress(final String name, final String address) {
+	public void saveAddress(final String address) {
 		handler.post(new Runnable() {
 
 			@Override
@@ -150,7 +146,6 @@ public class ConfigUtils {
 				db.execSQL("delete from address_conf");
 
 				ContentValues values = new ContentValues();
-				values.put("name", name);
 				values.put("address", address);
 				db.insert("address_conf", null, values);
 				db.close();

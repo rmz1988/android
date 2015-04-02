@@ -41,7 +41,7 @@ mainModule.config(["$stateProvider", "w5cValidatorProvider", "$httpProvider",
 
         w5cValidatorProvider.setRules({
             title: {
-                required: '请填写计划标题'
+                required: '请填写计划内容'
             }
         });
 
@@ -60,10 +60,16 @@ mainModule.config(["$stateProvider", "w5cValidatorProvider", "$httpProvider",
             templateUrl: 'add_plan.html'
         }).state('execute', {
             url: '/execute',
-            templateUrl: 'plan_detail.html'
+            templateUrl: 'plan_execute.html'
         }).state('audit', {
             url: '/audit',
             templateUrl: 'audit_detail.html'
+        }).state('detail', {
+            url: '/detail',
+            templateUrl: 'plan_detail.html'
+        }).state('executeDetail', {
+            url: '/execute/detail',
+            templateUrl: 'execute_detail.html'
         });
 
     }

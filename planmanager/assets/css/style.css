@@ -49,14 +49,14 @@ body {
 .menu-item {
     display: block;
     border-right: 1px solid #DAE0E2;
-    width: 33%;
+    width: 25%;
     height: 60px;
     float: left;
     background-color: #DBF6FD;
 }
 
 .menu-item {
-    font-size: 20px;
+    font-size: 18px;
     color: #777777;
     text-align: center;
     line-height: 60px;
@@ -99,6 +99,21 @@ body {
     font-size: 18px;
     font-weight: bold;
     padding: 10px 5px;
+}
+
+.plan:focus, .plan:hover, .plan:visited {
+    border: 1px solid #bce8f1;
+    background-color: #bce8f1;
+}
+
+.plan-content-full {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 5px;
+    line-height: 42px;
 }
 
 .plan-content .status {
