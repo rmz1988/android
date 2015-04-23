@@ -24,7 +24,7 @@ loginModule.controller('LoginController', ['$scope', "$http", function ($scope, 
                     result.rootname, result.department, result.position, result.depname, result.posname,
                     result.power, result.key);
                 android.dismissDialog();
-                window.location.href = '/android_asset/html/main.html#/list/'
+                window.location.href = '/android_asset/html/index.html'
             } else {
                 android.loginFailed();
             }
